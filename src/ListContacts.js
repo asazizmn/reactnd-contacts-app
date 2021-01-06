@@ -31,7 +31,7 @@ function ListContacts(props) {
                     </div>
                     <button className='contact-remove'>
                         Remove
-                        </button>
+                    </button>
                 </li>
             ))}
         </ol>
