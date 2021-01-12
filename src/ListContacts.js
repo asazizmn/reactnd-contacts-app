@@ -25,11 +25,21 @@ function ListContacts(props) {
                             width='100%'
                         />
                     </div>
+
                     <div className='contact-details'>
                         <p>{contact.name}</p>
                         <p>@{contact.handle}</p>
                     </div>
-                    <button className='contact-remove'>
+
+                    <button
+                        className='contact-remove'
+                        onClick={
+
+                            // please note that it is not possible to call functions directly here, in react
+                            // rather it is important to provide a function definition instead
+                            () => props.onContactDelete(contact)
+                        }
+                    >
                         Remove
                     </button>
                 </li>
