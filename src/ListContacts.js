@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 
@@ -46,6 +47,14 @@ function ListContacts(props) {
             ))}
         </ol>
     )
+}
+
+
+
+// props validation definition
+ListContacts.propTypes = {
+    contacts: PropTypes.array.isRequired,
+    onContactDelete: PropTypes.func.isRequired
 }
 
 

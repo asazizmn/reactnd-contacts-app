@@ -54,7 +54,7 @@ class App extends Component {
       <div>
         <ListContacts
           contacts={this.state.contacts} 
-          onContactDelete={this.removeContact}/>
+          onContactDelete={this.removeContact} />
       </div>
     );
   }
