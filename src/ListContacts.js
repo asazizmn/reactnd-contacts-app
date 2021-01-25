@@ -6,9 +6,16 @@ import PropTypes from 'prop-types';
 class ListContacts extends Component {
 
     // this is how you add PropTypes to a class component
+    // please note that unlike state which is different for each instance
+    // ... propTypes is a definition that is per class, not per instance
     static propTypes = {
         contacts: PropTypes.array.isRequired,
         onContactDelete: PropTypes.func.isRequired
+    }
+
+    // state to be tied with the search field
+    state = {
+        query: ''
     }
 
 
