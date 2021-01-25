@@ -24,6 +24,7 @@ class ListContacts extends Component {
         this.setState(() => ({
 
             // removes whitespace from both ENDS of a string
+            // ... this will also now be reflected in the field UI
             query: query.trim()
         }))
     }
