@@ -32,6 +32,9 @@ class ListContacts extends Component {
     render() {
         return (
             <div className='list-contacts'>
+
+                {JSON.stringify(this.state)}
+
                 <div className='list-contacts-top'>
                     <input
                         type='text'
