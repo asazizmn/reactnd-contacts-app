@@ -36,10 +36,18 @@ class ListContacts extends Component {
         const { query } = this.state;
         const { contacts, onContactDelete } = this.props;
 
+        // an array of all the filtered contacts
+        // ... created by ensuring each contact fulfils the filter requirement
+        // ... in this case, simply checking if it includes the query
+        let filteredContacts = contacts.filter(contact => (
+            contact.name.toLowerCase().includes(query.toLowerCase())
+        ))
+
+        const queriedContacts = (query === '' ? contacts : filteredContacts)
+
+
         return (
             <div className='list-contacts'>
-
-                {JSON.stringify(this.state)}
 
                 <div className='list-contacts-top'>
                     <input
@@ -55,8 +63,8 @@ class ListContacts extends Component {
                 </div>
 
                 <ol className='contact-list'>
-                    {contacts.map(contact => (
-                        <li key={contact.id} className='contact-list-item'>
+                    {queriedContacts.map(contact => (
+                        <li key={contact.id} className='contact-list-item' >
                             {
                                 // generally when images are part of the actual content, use <img>
                                 // but when images are not part of the main content, simply use background-image
@@ -65,7 +73,7 @@ class ListContacts extends Component {
                                 // since the avatar is actually part of the content here
                                 // ... it makes sense to use 'img', as opposed to 'background-image'
                             }
-                            <div className='contact-avatar'>
+                            < div className='contact-avatar' >
                                 <img
                                     src={contact.avatarURL}
                                     style={{ borderRadius: '50%' }}
@@ -93,10 +101,11 @@ class ListContacts extends Component {
                                 Remove
                     </button>
                         </li>
-                    ))}
+                    ))
+                    }
                 </ol>
 
-            </div>
+            </div >
 
 
         )
