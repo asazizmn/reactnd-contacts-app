@@ -31,6 +31,11 @@ class ListContacts extends Component {
 
 
     render() {
+
+        // destructure state and props for easier access
+        const { query } = this.state;
+        const { contacts, onContactDelete } = this.props;
+
         return (
             <div className='list-contacts'>
 
@@ -44,13 +49,13 @@ class ListContacts extends Component {
 
                         // this is what turns this component into a "controlled component"
                         // it's basically when form 
-                        value={this.state.query}
+                        value={query}
                         onChange={event => this.updateQuery(event.target.value)}
                     />
                 </div>
 
                 <ol className='contact-list'>
-                    {this.props.contacts.map(contact => (
+                    {contacts.map(contact => (
                         <li key={contact.id} className='contact-list-item'>
                             {
                                 // generally when images are part of the actual content, use <img>
@@ -82,7 +87,7 @@ class ListContacts extends Component {
 
                                     // please note that it is not possible to call functions directly here, in react
                                     // rather it is important to provide a function definition instead
-                                    () => this.props.onContactDelete(contact)
+                                    () => onContactDelete(contact)
                                 }
                             >
                                 Remove
