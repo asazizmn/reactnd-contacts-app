@@ -38,7 +38,7 @@ class ListContacts extends Component {
 
         // an array of all the filtered contacts
         // ... created by ensuring each contact fulfils the filter requirement
-        // ... in this case, simply checking if it includes the query
+        // ... in this case, simply checking if it includes the query characters
         let filteredContacts = contacts.filter(contact => (
             contact.name.toLowerCase().includes(query.toLowerCase())
         ))
