@@ -11,23 +11,33 @@ class ListContacts extends Component {
     static propTypes = {
         allContacts: PropTypes.array.isRequired,
         onContactDelete: PropTypes.func.isRequired
-    }
+    };
 
     // state to be tied with the search field
     state = {
         query: ''
-    }
+    };
 
 
-    // query event handler definition
+    /*
+     * query event handler definition
+     */
     updateQuery = query => {
         this.setState(() => ({
 
             // removes whitespace from both ENDS of a string
             // ... this will also now be reflected in the field UI
             query: query.trim()
-        }))
-    }
+        }));
+    };
+
+
+    /*
+     * clear query simply reusing updateQuery
+     */
+    clearQuery = () => {
+        this.updateQuery('');
+    };
 
 
     render() {
@@ -41,9 +51,9 @@ class ListContacts extends Component {
         // ... in this case, simply checking if it includes the query characters
         let filteredContacts = allContacts.filter(contact => (
             contact.name.toLowerCase().includes(query.toLowerCase())
-        ))
+        ));
 
-        const contacts = (query === '' ? allContacts : filteredContacts)
+        const visibleContacts = (query === '' ? allContacts : filteredContacts);
 
 
         return (
@@ -65,11 +75,21 @@ class ListContacts extends Component {
 
 
                 {/* filter meta data */}
+                {visibleContacts.length !== allContacts.length && (
+                    <div className="showing-contacts">
+                        <span>
+                            Now showing {visibleContacts.length} of {allContacts.length}
+                        </span> /
+                        <button onClick={() => this.updateQuery('')}>
+                            Show all
+                        </button>
+                    </div>
+                )}
 
 
-                {/*  */}
+                {/* contacts display  */}
                 <ol className='contact-list'>
-                    {contacts.map(contact => (
+                    {visibleContacts.map(contact => (
                         <li key={contact.id} className='contact-list-item' >
                             {
                                 // generally when images are part of the actual content, use <img>
@@ -103,12 +123,9 @@ class ListContacts extends Component {
                                     // rather it is important to provide a function definition instead
                                     () => onContactDelete(contact)
                                 }
-                            >
-                                Remove
-                    </button>
+                            />
                         </li>
-                    ))
-                    }
+                    ))}
                 </ol>
 
             </div >

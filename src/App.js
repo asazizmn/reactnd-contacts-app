@@ -45,8 +45,8 @@ class App extends Component {
       // we're simply creating a new array of elements that pass the test
       // ... `item => item.id !== contact.id`
       contacts: prevState.contacts.filter(item => item.id !== contact.id)
-    }))
-  }
+    }));
+  };
 
 
   render() {
