@@ -9,7 +9,7 @@ class ListContacts extends Component {
     // please note that unlike state which is different for each instance
     // ... propTypes is a definition that is per class, not per instance
     static propTypes = {
-        contacts: PropTypes.array.isRequired,
+        allContacts: PropTypes.array.isRequired,
         onContactDelete: PropTypes.func.isRequired
     }
 
@@ -34,21 +34,22 @@ class ListContacts extends Component {
 
         // destructure state and props for easier access
         const { query } = this.state;
-        const { contacts, onContactDelete } = this.props;
+        const { allContacts, onContactDelete } = this.props;
 
         // an array of all the filtered contacts
         // ... created by ensuring each contact fulfils the filter requirement
         // ... in this case, simply checking if it includes the query characters
-        let filteredContacts = contacts.filter(contact => (
+        let filteredContacts = allContacts.filter(contact => (
             contact.name.toLowerCase().includes(query.toLowerCase())
         ))
 
-        const queriedContacts = (query === '' ? contacts : filteredContacts)
+        const contacts = (query === '' ? allContacts : filteredContacts)
 
 
         return (
             <div className='list-contacts'>
 
+                {/* search bar */}
                 <div className='list-contacts-top'>
                     <input
                         type='text'
@@ -62,8 +63,13 @@ class ListContacts extends Component {
                     />
                 </div>
 
+
+                {/* filter meta data */}
+
+
+                {/*  */}
                 <ol className='contact-list'>
-                    {queriedContacts.map(contact => (
+                    {contacts.map(contact => (
                         <li key={contact.id} className='contact-list-item' >
                             {
                                 // generally when images are part of the actual content, use <img>
@@ -117,7 +123,7 @@ class ListContacts extends Component {
 // // props validation definition
 // // this is how you add PropTypes to a functional component
 // ListContacts.propTypes = {
-//     contacts: PropTypes.array.isRequired,
+//     allContacts: PropTypes.array.isRequired,
 //     onContactDelete: PropTypes.func.isRequired
 // }
 
