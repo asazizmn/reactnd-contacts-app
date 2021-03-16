@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListContacts from './ListContacts';
+import * as ContactsAPI from './utils/ContactsAPI';
 
 
 
@@ -7,26 +8,48 @@ class App extends Component {
 
   state = {
     contacts: [
-      {
-        "id": "karen",
-        "name": "Karen Isgrigg",
-        "handle": "karen_isgrigg",
-        "avatarURL": "http://localhost:5001/karen.jpg"
-      },
-      {
-        "id": "richard",
-        "name": "Richard Kalehoff",
-        "handle": "richardkalehoff",
-        "avatarURL": "http://localhost:5001/richard.jpg"
-      },
-      {
-        "id": "tyler",
-        "name": "Tyler McGinnis",
-        "handle": "tylermcginnis",
-        "avatarURL": "http://localhost:5001/tyler.jpg"
-      }
+      // {
+      //   "id": "karen",
+      //   "name": "Karen Isgrigg",
+      //   "handle": "@karen_isgrigg",
+      //   "avatarURL": "http://localhost:5001/karen.jpg"
+      // },
+      // {
+      //   "id": "richard",
+      //   "name": "Richard Kalehoff",
+      //   "handle": "@richardkalehoff",
+      //   "avatarURL": "http://localhost:5001/richard.jpg"
+      // },
+      // {
+      //   "id": "tyler",
+      //   "name": "Tyler McGinnis",
+      //   "handle": "@tylermcginnis",
+      //   "avatarURL": "http://localhost:5001/tyler.jpg"
+      // }
     ]
   };
+
+
+  /*
+   * retrieves the contacts data, and sets it to our local state as a result
+   */
+  componentDidMount = () => {
+
+    // please note that `.getAll()` returns a promise (which is an object since ES6)
+    // ... that will be containing our desired data
+    // ... which in turn can be accessed through it's `.then()` method 
+    // ... which basically defines the callbacks to be executed when it is resolved (ie ready)
+    ContactsAPI.getAll().then(
+      contacts => this.setState({ 
+
+        // please note that normally `setState` expects something like `contacts: contacts`
+        // however, a feature of ES6 allows the value to be provided directly 
+        // ... as long as it is the same as the key name
+        contacts
+        
+      })
+    );
+  }
 
 
   /* 
