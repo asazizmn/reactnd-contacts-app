@@ -57,6 +57,7 @@ class App extends Component {
    */
   removeContact = contact => {
 
+    // remove contact from local state
     // the anonymous function provided here will be returning a new contacts array to setState
     // ... in order for it to help replace/merge the new state with the old state 
     // please note the use of brackets to help implicitly return the containing object
@@ -69,6 +70,10 @@ class App extends Component {
       // ... `item => item.id !== contact.id`
       contacts: prevState.contacts.filter(item => item.id !== contact.id)
     }));
+
+    // now also it from the database
+    ContactsAPI.remove(contact);
+
   };
 
 
