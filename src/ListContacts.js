@@ -44,7 +44,7 @@ class ListContacts extends Component {
 
         // destructure state and props for easier access
         const { query } = this.state;
-        const { allContacts, onContactDelete } = this.props;
+        const { allContacts, onContactDelete, onClick } = this.props;
 
         // an array of all the filtered contacts
         // ... created by ensuring each contact fulfils the filter requirement
@@ -71,6 +71,10 @@ class ListContacts extends Component {
                         value={query}
                         onChange={event => this.updateQuery(event.target.value)}
                     />
+
+                    <a href="#create" onClick={onClick} className='add-contact'>
+                        Add Contact
+                    </a>
                 </div>
 
 

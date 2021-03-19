@@ -9,7 +9,7 @@ class App extends Component {
 
     state = {
         contacts: [],
-        screen: 'create'
+        screen: 'list'
     };
 
 
@@ -67,6 +67,12 @@ class App extends Component {
                     <ListContacts
                         allContacts={this.state.contacts}
                         onContactDelete={this.removeContact}
+
+                        onClick={() => {
+                            this.setState({
+                                screen: 'create'
+                            });
+                        }}
                     />
                 )}
 
