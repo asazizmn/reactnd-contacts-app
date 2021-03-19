@@ -63,16 +63,16 @@ class App extends Component {
     render() {
         return (
             <div>
-                {
-                    this.state.screen === 'list' && <ListContacts
+                {this.state.screen === 'list' && (
+                    <ListContacts
                         allContacts={this.state.contacts}
                         onContactDelete={this.removeContact}
                     />
-                }
+                )}
 
-                {
-                    this.state.screen === 'create' && <CreateContact />
-                }
+                {this.state.screen === 'create' && (
+                    <CreateContact />
+                )}
             </div>
         );
     }
