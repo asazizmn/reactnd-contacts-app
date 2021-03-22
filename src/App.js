@@ -61,6 +61,22 @@ class App extends Component {
     };
 
 
+    createContact = contact => {
+        ContactsAPI.create(contact).then(contact => {
+            this.setState(currentState => ({
+
+                // ERR: WHY NOT THE FOLLOWING?
+                // contacts: [
+                //     ...currentState,
+                //     contact
+                // ]
+
+                contacts: currentState.contacts.concat([contact])
+            }));
+        });
+    };
+
+
     render() {
         return (
             <div>
@@ -71,7 +87,27 @@ class App extends Component {
                     />
                 )} />
 
-                <Route path='/create' component={CreateContact} />
+                {/* 
+                  * `history` is optionally available
+                  * we will use it to allow returning back
+                  * ... to the main listing page after adding contact 
+                  */}
+                <Route path='/create' render={({ history }) => (
+                    <CreateContact
+
+                        // normally we would have just done 
+                        // ... onCreateContact={this.createContact}
+                        // ... however, in this case we would like to make use of `history`
+                        // 
+                        // please note that the following is just a function definition
+                        // ... and so `contact` will be generated when the button is pressed
+                        // ... and essentially passed in as an argument
+                        onCreateContact={contact => {
+                            this.createContact(contact);
+                            history.push('/');
+                        }}
+                    />
+                )} />
             </div>
         );
     }

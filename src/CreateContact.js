@@ -10,21 +10,22 @@ class CreateContact extends Component {
     handleSubmit = event => {
         event.preventDefault();
         
+        const { onCreateContact } = this.props;
+        
         // `form-serialize` allows data to be transformed into a format that can be
         // ... transmitted (ie query string), or stored
         // [https://www.npmjs.com/package/form-serialize]
-        const obj = serialize(event.target, {
+        const contact = serialize(event.target, {
             
             // `hash` for output as a js object (instead of the default url encoded)
             // obj -> { foo: 'bar' } (instead of str -> "foo=bar")
             hash: true
         });
-
-        // `onCreateContact` is yet to be created
-        if (this.props.onCreateContact) {
-            this.props.onCreateContact(obj);
-        }
+        
+        // short-circuit evaluation being used to ensure `onCreateContact` exists first
+        onCreateContact && onCreateContact(contact);
     }
+
 
     render() {
         return (
