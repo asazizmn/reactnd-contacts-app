@@ -3,13 +3,14 @@ import ListContacts from './ListContacts';
 import * as ContactsAPI from './utils/ContactsAPI';
 import CreateContact from './CreateContact';
 
+import { Route } from 'react-router-dom';
+
 
 
 class App extends Component {
 
     state = {
-        contacts: [],
-        screen: 'list'
+        contacts: []
     };
 
 
@@ -63,22 +64,14 @@ class App extends Component {
     render() {
         return (
             <div>
-                {this.state.screen === 'list' && (
+                <Route exact path='/' render={() => (
                     <ListContacts
                         allContacts={this.state.contacts}
                         onContactDelete={this.removeContact}
-
-                        onClick={() => {
-                            this.setState({
-                                screen: 'create'
-                            });
-                        }}
                     />
-                )}
+                )} />
 
-                {this.state.screen === 'create' && (
-                    <CreateContact />
-                )}
+                <Route path='/create' component={CreateContact} />
             </div>
         );
     }
