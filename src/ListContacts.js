@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -44,7 +45,7 @@ class ListContacts extends Component {
 
         // destructure state and props for easier access
         const { query } = this.state;
-        const { allContacts, onContactDelete, onClick } = this.props;
+        const { allContacts, onContactDelete } = this.props;
 
         // an array of all the filtered contacts
         // ... created by ensuring each contact fulfils the filter requirement
@@ -72,9 +73,9 @@ class ListContacts extends Component {
                         onChange={event => this.updateQuery(event.target.value)}
                     />
 
-                    <a href="#create" onClick={onClick} className='add-contact'>
+                    <Link to="/create" className='add-contact'>
                         Add Contact
-                    </a>
+                    </Link>
                 </div>
 
 
@@ -103,7 +104,7 @@ class ListContacts extends Component {
                                 // since the avatar is actually part of the content here
                                 // ... it makes sense to use 'img', as opposed to 'background-image'
                             }
-                            < div className='contact-avatar' >
+                            <div className='contact-avatar'>
                                 <img
                                     src={contact.avatarURL}
                                     style={{ borderRadius: '50%' }}
