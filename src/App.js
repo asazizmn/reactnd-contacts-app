@@ -62,7 +62,11 @@ class App extends Component {
 
 
     createContact = contact => {
+
+        // add contact in backend using API
         ContactsAPI.create(contact).then(contact => {
+
+            // then also update local state with new contact
             this.setState(currentState => ({
 
                 contacts: [
