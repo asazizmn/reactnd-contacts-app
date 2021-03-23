@@ -63,7 +63,6 @@ class App extends Component {
 
     createContact = contact => {
         ContactsAPI.create(contact).then(contact => {
-
             this.setState(currentState => ({
 
                 contacts: [
