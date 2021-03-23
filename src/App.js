@@ -90,7 +90,7 @@ class App extends Component {
                 )} />
 
                 {/* 
-                  * `history` is optionally available
+                  * `history` is optionally available here from react router props
                   * we will use it to allow returning back
                   * ... to the main listing page after adding contact 
                   */}
