@@ -63,15 +63,17 @@ class App extends Component {
 
     createContact = contact => {
         ContactsAPI.create(contact).then(contact => {
+
             this.setState(currentState => ({
 
-                // ERR: WHY NOT THE FOLLOWING?
-                // contacts: [
-                //     ...currentState,
-                //     contact
-                // ]
+                contacts: [
+                    ...currentState.contacts,
+                    contact
+                ]
 
-                contacts: currentState.contacts.concat([contact])
+                // please note that using `push` would only return the array length
+                // whereas `concat` doesn't modify the calling array, but returns a new one
+                // contacts: currentState.contacts.concat([contact])
             }));
         });
     };
