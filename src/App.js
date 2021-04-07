@@ -103,8 +103,7 @@ class App extends Component {
                             // ... however, in this case we would like to make use of `history`
                             // 
                             // please note that the following is just a function definition
-                            // ... and so `contact` will be generated when the button is pressed
-                            // ... and essentially passed in as an argument
+                            // ... to allow `contact` to be generated in `handleSubmit`, and passed in as an argument
                             onCreateContact={contact => {
                                 this.createContact(contact);
                                 history.push('/');
