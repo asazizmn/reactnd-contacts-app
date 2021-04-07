@@ -54,7 +54,6 @@ class App extends Component {
 
         // now also it from the database
         ContactsAPI.remove(contact);
-
     };
 
 
