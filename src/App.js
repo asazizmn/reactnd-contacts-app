@@ -19,10 +19,8 @@ class App extends Component {
      */
     componentDidMount = () => {
 
-        // please note that `.getAll()` returns a promise (which is an object since ES6)
-        // ... that will be containing our desired data
-        // ... which in turn can be accessed through it's `.then()` method 
-        // ... which basically defines the callbacks to be executed when it is resolved (ie ready)
+        // `.getAll()` returns a Promise object (since ES6), containing the data
+        // ... which runs specific callbacks, specified using `.then(...)`, when ready
         ContactsAPI.getAll().then(
             contacts => this.setState({
 
