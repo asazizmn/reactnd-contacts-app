@@ -90,11 +90,10 @@ class App extends Component {
                         />
                     )} />
 
-                    {/* 
-                      * ---- Create Contact Route ----
-                      * `history` is optionally available here from react router props
-                      * we will use it to allow returning back
-                      * ... to the main listing page after adding contact 
+                    {/* ---- Create Contact Route ---- */}
+                    {/* each time a component is rendered with React Router v4,
+                      * ... it is passed three components, `location`, `match`, `history`
+                      * ... in this case we will use history to allow returning to listing after create
                       */}
                     <Route path='/create' render={({ history }) => (
                         <CreateContact
