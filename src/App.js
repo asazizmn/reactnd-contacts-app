@@ -82,6 +82,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
+                    {/* ---- List Contacts Route ---- */}
                     <Route exact path='/' render={() => (
                         <ListContacts
                             allContacts={this.state.contacts}
@@ -89,13 +90,12 @@ class App extends Component {
                         />
                     )} />
 
-                    {
-                        /* 
-                         * `history` is optionally available here from react router props
-                         * we will use it to allow returning back
-                         * ... to the main listing page after adding contact 
-                         */
-                    }
+                    {/* 
+                      * ---- Create Contact Route ----
+                      * `history` is optionally available here from react router props
+                      * we will use it to allow returning back
+                      * ... to the main listing page after adding contact 
+                      */}
                     <Route path='/create' render={({ history }) => (
                         <CreateContact
 
