@@ -28,10 +28,9 @@ class App extends Component {
                 // however, a feature of ES6 allows the value to be provided directly 
                 // ... as long as it is the same as the key name
                 contacts
-
             })
         );
-    }
+    };
 
 
     /* 
