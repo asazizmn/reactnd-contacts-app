@@ -3,7 +3,7 @@ import ListContacts from './ListContacts';
 import * as ContactsAPI from './utils/ContactsAPI';
 import CreateContact from './CreateContact';
 
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 
@@ -84,36 +84,40 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <Route exact path='/' render={() => (
-                    <ListContacts
-                        allContacts={this.state.contacts}
-                        onContactDelete={this.removeContact}
-                    />
-                )} />
+            <BrowserRouter>
+                <div>
+                    <Route exact path='/' render={() => (
+                        <ListContacts
+                            allContacts={this.state.contacts}
+                            onContactDelete={this.removeContact}
+                        />
+                    )} />
 
-                {/* 
-                  * `history` is optionally available here from react router props
-                  * we will use it to allow returning back
-                  * ... to the main listing page after adding contact 
-                  */}
-                <Route path='/create' render={({ history }) => (
-                    <CreateContact
+                    {
+                        /* 
+                         * `history` is optionally available here from react router props
+                         * we will use it to allow returning back
+                         * ... to the main listing page after adding contact 
+                         */
+                    }
+                    <Route path='/create' render={({ history }) => (
+                        <CreateContact
 
-                        // normally we would have just done 
-                        // ... onCreateContact={this.createContact}
-                        // ... however, in this case we would like to make use of `history`
-                        // 
-                        // please note that the following is just a function definition
-                        // ... and so `contact` will be generated when the button is pressed
-                        // ... and essentially passed in as an argument
-                        onCreateContact={contact => {
-                            this.createContact(contact);
-                            history.push('/');
-                        }}
-                    />
-                )} />
-            </div>
+                            // normally we would have just done 
+                            // ... onCreateContact={this.createContact}
+                            // ... however, in this case we would like to make use of `history`
+                            // 
+                            // please note that the following is just a function definition
+                            // ... and so `contact` will be generated when the button is pressed
+                            // ... and essentially passed in as an argument
+                            onCreateContact={contact => {
+                                this.createContact(contact);
+                                history.push('/');
+                            }}
+                        />
+                    )} />
+                </div>
+            </BrowserRouter>
         );
     }
 }
