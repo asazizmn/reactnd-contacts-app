@@ -107,7 +107,7 @@ class App extends Component {
                             // ... onCreateContact={this.createContact}
                             // ... however, in this case we would like to make use of `history`
                             // 
-                            // please note that the following is just a function definition
+                            // please note that the provided function is just a definition
                             // ... to allow `contact` to be generated in `handleSubmit`, and passed in as an argument
                             onCreateContact={contact => {
                                 this.createContact(contact);
