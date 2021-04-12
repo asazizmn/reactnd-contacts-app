@@ -22,6 +22,8 @@ class ListContacts extends Component {
 
     /*
      * query event handler definition
+     * will be used by the 'controlled input' on every change
+     * ... to update the state with a new value
      */
     updateQuery = query => {
         this.setState(() => ({
