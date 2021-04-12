@@ -82,7 +82,10 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    {/* ---- List Contacts Route ---- */}
+                    {
+                        /* ---- List Contacts Route ----
+                         * includes a search bar and a list of all the contacts */
+                    }
                     <Route exact path='/' render={() => (
                         <ListContacts
                             allContacts={this.state.contacts}
@@ -90,11 +93,13 @@ class App extends Component {
                         />
                     )} />
 
-                    {/* ---- Create Contact Route ---- */}
-                    {/* each time a component is rendered with React Router v4,
-                      * ... it is passed three components, `location`, `match`, `history`
-                      * ... in this case we will use history to allow returning to listing after create
-                      */}
+
+                    {
+                        /* ---- Create Contact Route ---- 
+                         * each time a component is rendered with React Router v4,
+                         * ... it is passed three components, `location`, `match`, `history`
+                         * ... in this case we will use history to allow returning to listing after create */
+                    }
                     <Route path='/create' render={({ history }) => (
                         <CreateContact
 
