@@ -16,6 +16,9 @@ class CreateContact extends Component {
         // `form-serialize` allows data to be transformed into a format that can be
         // ... transmitted (ie query string), or stored (ie js object)
         // [https://www.npmjs.com/package/form-serialize]
+        //
+        // `event.target` in this case refers to the entire form, including
+        // ... name='avatarURL', name='name', name='handle'
         const contact = serialize(event.target, {
             
             // `hash` for output as a js object (instead of the default url encoded)
