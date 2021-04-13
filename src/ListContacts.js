@@ -127,10 +127,13 @@ class ListContacts extends Component {
                                 className='contact-remove'
                                 onClick={
 
-                                    // in this particular case, it's not possible to call `onContactDelete(contact)` directly
+                                    // in react, it's not possible to make a function call directly
+                                    // ... ie can NOT call `onContactDelete(contact)` directly
                                     // ... therefore, a function has been specified which in turn makes the fn call
                                     // pls nt that in the absence of arguments,
                                     // ... it would have been possible to simply assign `onContactDelete` to `onClick` directly
+                                    // or sometimes when false or true is expected, a function call can be made
+                                    // ... ie. `disabled={this.isDisabled()}`
                                     () => onContactDelete(contact)
                                 }
                             />
