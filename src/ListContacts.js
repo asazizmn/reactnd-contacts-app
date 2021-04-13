@@ -127,8 +127,8 @@ class ListContacts extends Component {
                                 className='contact-remove'
                                 onClick={
 
-                                    // please note that it is not possible to call functions directly here, in react
-                                    // rather it is important to provide a function definition instead
+                                    // in this particular case, it's not possible to call `onContactDelete(contact)` directly
+                                    // ... therefore, a function has been specified which in turn makes the fn call
                                     () => onContactDelete(contact)
                                 }
                             />
