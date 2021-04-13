@@ -70,7 +70,8 @@ class App extends Component {
                     contact
                 ]
 
-                // please note that using `push` would only return the array length
+                // the aim is to provide `contacts:` a new array of contacts
+                // however, please note that using `push` would only return the array length
                 // whereas `concat` doesn't modify the calling array, but returns a new one
                 // contacts: currentState.contacts.concat([contact])
             }));
