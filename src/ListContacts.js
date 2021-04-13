@@ -129,6 +129,8 @@ class ListContacts extends Component {
 
                                     // in this particular case, it's not possible to call `onContactDelete(contact)` directly
                                     // ... therefore, a function has been specified which in turn makes the fn call
+                                    // pls nt that in the absence of arguments,
+                                    // ... it would have been possible to simply assign `onContactDelete` to `onClick` directly
                                     () => onContactDelete(contact)
                                 }
                             />
