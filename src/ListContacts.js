@@ -50,8 +50,7 @@ class ListContacts extends Component {
         const { allContacts, onContactDelete } = this.props;
 
         // an array of all the filtered contacts
-        // ... created by ensuring each contact fulfils the filter requirement
-        // ... in this case, simply checking if it includes the query characters
+        // ... resulting from a filter checking if contacts include the query characters
         let filteredContacts = allContacts.filter(contact => (
             contact.name.toLowerCase().includes(query.toLowerCase())
         ));
