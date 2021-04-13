@@ -69,7 +69,9 @@ class ListContacts extends Component {
                         placeholder='Search Contacts'
 
                         // this is what turns this component into a "controlled component"
-                        // it's basically when form 
+                        // it's basically when form input is processed by react and 
+                        // ... the input display is simply linked to show the state value
+                        // ... pls nt `event.target` is a ref to the DOM object onto which the event was dispatched
                         value={query}
                         onChange={event => this.updateQuery(event.target.value)}
                     />
