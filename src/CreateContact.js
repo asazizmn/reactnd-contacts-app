@@ -14,7 +14,7 @@ class CreateContact extends Component {
         const { onCreateContact } = this.props;
         
         // `form-serialize` allows data to be transformed into a format that can be
-        // ... transmitted (ie query string), or stored
+        // ... transmitted (ie query string), or stored (ie js object)
         // [https://www.npmjs.com/package/form-serialize]
         const contact = serialize(event.target, {
             
